@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1200, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #box {
+            width: 200px;height:200px;
+            background-color: gray;
+        }
+    </style>
 </head>
 <body>
-    <h1>this is a heading</h1>
-    <p>this is <i>a little</i> sample</p>
+    <div id="box">
+        <button id="myButton">click me</button>
+    </div>
+
     <script>
-        const myPara = document.querySelector('p')
+        const box = document.querySelector("#box")
+        const myButton = document.querySelector("#myButton")
 
-        // beforebegin、afterbegin、beforeend、 afterend
-        myPara.insertAdjacentHTML('beforebegin','<i>test</i>')
-        myPara.insertAdjacentHTML('beforeend','<i>test2</i>')
-        myPara.insertAdjacentText('afterbegin','testsdasdfasdfa;sdjf')
-        console.log(myPara.innerHTML)
-        console.log(myPara.outerHTML)
+        box.addEventListener('click', (e) => {
+            console.clear()
+            console.log(e.isTrusted)
+            console.log(`event.type:${e.type}`)
+            console.log(`event.target: ${e.target.tagName}`)
+            console.log(`event.currentTarget:${e.currentTarget}`)
+        })
 
-        ///= 只访问里面的文本
-        console.log(myPara.textContent)
-        console.log(document.documentElement.textContent)
-        console.log(myPara.innerText)
     </script>
 </body>
 </html>

@@ -6,19 +6,36 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="myDiv" name="div1" class='test1'>
-        <p id="myPara">test</p>
-    </div>
+    <div id="box">test</div>
     <script>
-        const oDiv = document.getElementById('myDiv')
-        const oDiv1 = document.getElementsByName('div1')
-        const oDiv2 = document.getElementsByTagName('div')
-        const oDiv3 = document.getElementsByClassName('test1')
-        const oDiv4 = document.querySelector('#myDiv')
-        const oDiv5 = document.querySelectorAll('#myDiv')
-        console.log(oDiv,oDiv1,oDiv2,oDiv3)
-        console.log(oDiv4,oDiv5)
-        const oPara = oDiv.querySelector('#myPara')
+        const box = document.querySelector('#box')
+        const callback = (e) => {
+            console.log(e)
+            for (let prop in e) {
+                console.log(prop)
+            }
+        }
+
+        box.addEventListener('click', callback)
+
+
+        // 创建一个自定义事件
+        const helloEvent = new Event('hello',{bubbles:true, cancelable:false})
+        // const helloEvent = new customEvent('hello',{bubbles:true, cancelable:false})
+
+        const helloCallback = (event) => {
+            box.textContent = 'hello, event'
+    
+        }
+
+        box.addEventListener('hello', helloCallback)
+
+        document.body.addEventListener('hello',() => {
+            console.log('hello')
+        })
+
+        box.dispatchEvent(helloEvent)
+
     </script>
 </body>
 </html>
