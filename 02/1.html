@@ -10,11 +10,12 @@
     <script>
         const oButton = document.querySelector('button')
 
-        oButton.addEventListener('click', (event) => {
-            for (let prop in event) {
-                console.log(prop)
-            }
-        })
+        const callback = function(e) {
+            console.log(`${e.target}`)
+            e.preventDefault();
+        }
+
+        oButton.addEventListener('click', callback)
     </script>
 </body>
 </html>
